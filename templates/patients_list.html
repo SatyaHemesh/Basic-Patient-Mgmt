@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Patients{% endblock %}
+{% block content %}
+  <div class="card">
+    <h2>All Patients</h2>
+    <p><a class="btn primary" href="{{ url_for('new_patient') }}">Add Patient</a></p>
+    {% if patients %}
+      <table class="table">
+        <thead>
+          <tr><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Visits</th></tr>
+        </thead>
+        <tbody>
+        {% for p in patients %}
+          <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.age }}</td>
+            <td>{{ p.gender }}</td>
+            <td>{{ p.phone or "-" }}</td>
+            <td><a class="btn" href="{{ url_for('patient_visits', patient_id=p.id) }}">Manage</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No patients found.</p>
+    {% endif %}
+  </div>
+{% endblock %}

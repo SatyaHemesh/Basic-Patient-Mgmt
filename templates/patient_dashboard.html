@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <div class="grid two">
+    <div class="card">
+      <h2>Your Dashboard</h2>
+      <p>Welcome, {{ current_user.name }}.</p>
+      <p>This is a simple patient view. (Customize to show their own visits if you add ownership linkage.)</p>
+    </div>
+    <div class="card">
+      <h2>Quick Links</h2>
+      {% if current_user.role == 'admin' %}
+        <p><a class="btn" href="{{ url_for('admin_dashboard') }}">Go to Admin</a></p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

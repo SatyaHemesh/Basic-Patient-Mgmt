@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+  <div class="grid two">
+    <div class="card">
+      <h2>Patients</h2>
+      <p><a class="btn primary" href="{{ url_for('new_patient') }}">Add Patient</a></p>
+      {% if patients %}
+        <table class="table">
+          <thead>
+            <tr><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Visits</th></tr>
+          </thead>
+          <tbody>
+          {% for p in patients %}
+            <tr>
+              <td>{{ p.name }}</td>
+              <td>{{ p.age }}</td>
+              <td>{{ p.gender }}</td>
+              <td>{{ p.phone or "-" }}</td>
+              <td><a class="btn" href="{{ url_for('patient_visits', patient_id=p.id) }}">Manage</a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No patients yet.</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Tips</h2>
+      <ul>
+        <li>Use “Add Patient” to create a profile.</li>
+        <li>Open “Manage” to add visits for a patient.</li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}Patient Mgmt{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a class="brand" href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='logo.svg') }}" alt="logo">
+        <span>Patient Mgmt</span>
+      </a>
+      <a href="{{ url_for('home') }}">Home</a>
+      {% if current_user.is_authenticated and current_user.role == 'admin' %}
+        <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+        <a href="{{ url_for('patients_list') }}">Patients</a>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('patient_dashboard') }}">Dashboard</a>
+      {% endif %}
+    </div>
+    <div class="nav-right">
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('profile') }}">{{ current_user.name }}</a>
+        <a class="btn" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="btn" href="{{ url_for('login') }}">Login</a>
+        <a class="btn primary" href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="flash {{ category }}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

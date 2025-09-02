@@ -1,0 +1,33 @@
+:root { --brand: #2563eb; --bg: #0b1220; --card: #0f172a; --text: #e5e7eb; --muted: #9ca3af; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; background: var(--bg); color: var(--text); }
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.navbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #0a1020; border-bottom: 1px solid #111827; position: sticky; top: 0; z-index: 10; }
+.nav-left, .nav-right { display: flex; gap: 12px; align-items: center; }
+.brand { display: flex; gap: 10px; align-items: center; font-weight: 700; letter-spacing: .3px; }
+.brand img { width: 26px; height: 26px; }
+.container { max-width: 980px; margin: 24px auto; padding: 0 16px; }
+.card { background: var(--card); border: 1px solid #1f2937; border-radius: 14px; padding: 18px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+
+h1, h2, h3 { margin-top: 0; }
+.grid { display: grid; gap: 16px; }
+.grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 800px) { .grid.two, .grid.three { grid-template-columns: 1fr; } }
+
+.btn { display: inline-block; padding: 10px 14px; border-radius: 10px; border: 1px solid #1f2937; background: #0b1220; color: var(--text); font-weight: 600; }
+.btn.primary { background: var(--brand); border-color: #1d4ed8; color: white; }
+.btn.danger { background: #ef4444; border-color: #b91c1c; color: white; }
+
+form .field { margin-bottom: 12px; display: grid; gap: 6px; }
+input, select, textarea { width: 100%; background: #0b1220; border: 1px solid #1f2937; color: var(--text); padding: 10px; border-radius: 10px; }
+label { color: var(--muted); font-size: .95rem; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 10px; border-bottom: 1px solid #1f2937; text-align: left; }
+.flash { padding: 10px 12px; border-radius: 10px; margin: 8px 0; }
+.flash.success { background: #065f46; }
+.flash.info { background: #1e40af; }
+.flash.warning { background: #92400e; }
+.flash.danger { background: #7f1d1d; }

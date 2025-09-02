@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login · Patient Mgmt{% endblock %}
+{% block content %}
+  <div class="card" style="max-width:480px;margin:0 auto;">
+    <h2>Log In</h2>
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.email.label }}{{ form.email(size=32) }}
+        {% for e in form.email.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.password.label }}{{ form.password(size=32) }}
+        {% for e in form.password.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">{{ form.remember() }} {{ form.remember.label }}</div>
+      {{ form.submit(class_="btn primary") }}
+    </form>
+    <p style="margin-top:10px;color:#9ca3af;">Hint: admin@example.com / admin123</p>
+  </div>
+{% endblock %}

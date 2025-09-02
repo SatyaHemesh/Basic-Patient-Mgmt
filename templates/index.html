@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Welcome · Patient Mgmt{% endblock %}
+{% block content %}
+  <div class="card">
+    <h1>Welcome</h1>
+    <p>This is a lightweight Patient Management demo app.</p>
+    <p>
+      Try logging in as the seeded admin:<br>
+      <code>admin@example.com</code> / <code>admin123</code>
+    </p>
+    <div style="margin-top:12px;">
+      <a class="btn primary" href="{{ url_for('login') }}">Log In</a>
+      <a class="btn" href="{{ url_for('register') }}">Register</a>
+    </div>
+  </div>
+{% endblock %}

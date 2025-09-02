@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}New Patient{% endblock %}
+{% block content %}
+  <div class="card" style="max-width:700px;margin:0 auto;">
+    <h2>Add Patient</h2>
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.name.label }}{{ form.name() }}
+        {% for e in form.name.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.age.label }}{{ form.age() }}
+        {% for e in form.age.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.gender.label }}{{ form.gender() }}
+        {% for e in form.gender.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.address.label }}{{ form.address() }}
+        {% for e in form.address.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.phone.label }}{{ form.phone() }}
+        {% for e in form.phone.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      {{ form.submit(class_="btn primary") }}
+    </form>
+  </div>
+{% endblock %}

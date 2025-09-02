@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Visits · {{ patient.name }}{% endblock %}
+{% block content %}
+  <div class="grid two">
+    <div class="card">
+      <h2>Visits — {{ patient.name }}</h2>
+      {% if visits %}
+        <table class="table">
+          <thead>
+            <tr><th>Date</th><th>Reason</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            {% for v in visits %}
+              <tr>
+                <td>{{ v.visit_date.strftime('%Y-%m-%d') }}</td>
+                <td>{{ v.reason }}</td>
+                <td>{{ v.notes or "-" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p>No visits yet.</p>
+      {% endif %}
+    </div>
+    <div class="card">
+      <h2>Add Visit</h2>
+      <form method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="field">
+          {{ form.visit_date.label }}{{ form.visit_date() }}
+          {% for e in form.visit_date.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        </div>
+        <div class="field">
+          {{ form.reason.label }}{{ form.reason() }}
+          {% for e in form.reason.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        </div>
+        <div class="field">
+          {{ form.notes.label }}{{ form.notes(rows=3) }}
+          {% for e in form.notes.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        </div>
+        {{ form.submit(class_="btn primary") }}
+      </form>
+      <p style="margin-top:10px;"><a href="{{ url_for('patients_list') }}">← Back to Patients</a></p>
+    </div>
+  </div>
+{% endblock %}

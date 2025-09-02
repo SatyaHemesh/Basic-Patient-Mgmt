@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Visit{% endblock %}
+{% block content %}
+  <div class="card" style="max-width:700px;margin:0 auto;">
+    <h2>Add Visit</h2>
+    <form method="post" novalidate>
+      {{ form.hidden_tag() }}
+      <div class="field">
+        {{ form.visit_date.label }}{{ form.visit_date() }}
+        {% for e in form.visit_date.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.reason.label }}{{ form.reason() }}
+        {% for e in form.reason.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.notes.label }}{{ form.notes(rows=4) }}
+        {% for e in form.notes.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      {{ form.submit(class_="btn primary") }}
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+  <div class="card" style="max-width:600px;margin:0 auto;">
+    <h2>Profile</h2>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Role:</strong> {{ user.role }}</p>
+    <p><strong>Member since:</strong> {{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</p>
+  </div>
+{% endblock %}
