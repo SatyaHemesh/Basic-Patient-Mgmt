@@ -6,14 +6,13 @@
     <form method="post" novalidate>
       {{ form.hidden_tag() }}
       <div class="field">
-        {{ form.email.label }}{{ form.email(size=32) }}
-        {% for e in form.email.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        {{ form.username.label }}{{ form.username(size=32) }}
+        {% for e in form.username.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       <div class="field">
         {{ form.password.label }}{{ form.password(size=32) }}
         {% for e in form.password.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
-      <div class="field">{{ form.remember() }} {{ form.remember.label }}</div>
       {{ form.submit(class_="btn primary") }}
     </form>
     <p style="margin-top:10px;color:#9ca3af;">Hint: admin@example.com / admin123</p>

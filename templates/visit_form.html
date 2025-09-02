@@ -14,8 +14,16 @@
         {% for e in form.reason.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       <div class="field">
-        {{ form.notes.label }}{{ form.notes(rows=4) }}
-        {% for e in form.notes.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        {{ form.diagnosis.label }}{{ form.diagnosis(rows=4) }}
+        {% for e in form.diagnosis.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.treatment.label }}{{ form.treatment(rows=4) }}
+        {% for e in form.treatment.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        {{ form.fees_paid.label }}{{ form.fees_paid() }}
+        {% for e in form.fees_paid.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       {{ form.submit(class_="btn primary") }}
     </form>

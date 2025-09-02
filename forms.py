@@ -8,14 +8,15 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional, N
 
 
 class LoginForm(FlaskForm):
-    email = StringField("Email", validators=[DataRequired(), Email(), Length(max=100)])
+    username = StringField("Username", validators=[DataRequired(), Length(max=100)])
     password = PasswordField("Password", validators=[DataRequired(), Length(min=6, max=100)])
     submit = SubmitField("Login")
 
 
 class RegisterForm(FlaskForm):
     username = StringField("Username", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
+    password = PasswordField("Password", validators=[DataRequired(), EqualTo('confirm_password', message='Passwords must match')])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField("Register")
 
 class PatientForm(FlaskForm):
@@ -27,8 +28,9 @@ class PatientForm(FlaskForm):
     submit = SubmitField("Save Patient")
 
 class VisitForm(FlaskForm):
+    visit_date = DateField("Visit Date", validators=[DataRequired()], format='%Y-%m-%d')
     reason = TextAreaField("Reason for Visit", validators=[Optional()])
     diagnosis = TextAreaField("Diagnosis", validators=[Optional()])
     treatment = TextAreaField("Treatment", validators=[Optional()])
-    fees_paid = FloatField("Fees Paid", validators=[Optional(), NumberRange(min=0)])
+    fees_paid = DecimalField("Fees Paid", validators=[Optional(), NumberRange(min=0)])
     submit = SubmitField("Save Visit")

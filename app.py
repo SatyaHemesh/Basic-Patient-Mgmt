@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
@@ -8,7 +9,7 @@ from models import db, User, Patient, Visit
 from flask_migrate import Migrate
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "your_secret_key"
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "your_secret_key_for_development")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///patients.db"
 
 db.init_app(app)

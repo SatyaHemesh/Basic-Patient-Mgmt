@@ -6,24 +6,16 @@
     <form method="post" novalidate>
       {{ form.hidden_tag() }}
       <div class="field">
-        {{ form.name.label }}{{ form.name() }}
-        {% for e in form.name.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
-      </div>
-      <div class="field">
-        {{ form.email.label }}{{ form.email() }}
-        {% for e in form.email.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
-      </div>
-      <div class="field">
-        {{ form.role.label }}{{ form.role() }}
-        {% for e in form.role.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        {{ form.username.label }}{{ form.username() }}
+        {% for e in form.username.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       <div class="field">
         {{ form.password.label }}{{ form.password() }}
         {% for e in form.password.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       <div class="field">
-        {{ form.confirm.label }}{{ form.confirm() }}
-        {% for e in form.confirm.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
+        {{ form.confirm_password.label }}{{ form.confirm_password() }}
+        {% for e in form.confirm_password.errors %}<small class="flash danger">{{ e }}</small>{% endfor %}
       </div>
       {{ form.submit(class_="btn primary") }}
     </form>
